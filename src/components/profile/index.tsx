@@ -8,6 +8,7 @@ import {
     Link,
     HStack,
     IconButton,
+    useColorMode,
 } from '@chakra-ui/react'
 import profilePic from '../../assets/me.jpeg'
 import { motion } from 'framer-motion'
@@ -17,12 +18,14 @@ const Profile = () => {
     return (
         <Card as={motion.div}>
             <VStack alignItems={'center'} as={motion.div} layout="position">
-                <AspectRatio minW={120} maxW={240} w={'80%'} ratio={1} mt={4}>
+                <AspectRatio minW={160} maxW={200} w={'80%'} ratio={1} mt={4}>
                     <Image
-                        border={'1px solid text-color'}
+                        borderWidth={'1px'}
+                        borderStyle={'solid'}
                         borderRadius="full"
                         src={profilePic}
                         alt="Austin Bayley"
+                        boxShadow={'lg'}
                     />
                 </AspectRatio>
 

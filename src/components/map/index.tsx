@@ -50,7 +50,7 @@ const Refresher = () => {
         map.setView(map.getCenter(), map.getZoom(), {
             animate: true,
         })
-    }, 500)
+    }, 100)
     return <Container />
 }
 

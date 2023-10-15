@@ -1,63 +1,42 @@
-import {
-    Box,
-    Card,
-    Center,
-    HStack,
-    SlideFade,
-    VStack,
-    chakra,
-    shouldForwardProp,
-} from '@chakra-ui/react'
-import Map from './components/map'
+import { Card, Center, HStack, SlideFade, VStack } from '@chakra-ui/react'
 import Profile from './components/profile'
 import Stats from './components/stats'
-import { LayoutGroup, isValidMotionProp, motion } from 'framer-motion'
+import { LayoutGroup } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import useAPI from './hooks/api'
+import ChakraBox from './components/chakrabox'
+import MapBox from './components/mapbox'
 
-const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) =>
-        isValidMotionProp(prop) || shouldForwardProp(prop),
-})
-
-const MapBox = () => {
-    const [expanded, setExpanded] = useState(false)
-    const toggleMap = () => {
-        setExpanded(!expanded)
-    }
-
-    const baseWidth = { base: 300, sm: 400, lg: 300 }
-    const baseHeight = { base: 300, sm: 400, lg: 500 }
-    const expandedWidth = { base: 300, sm: 400, lg: 600 }
-    const expandedHeight = { base: 300, sm: 400, lg: 700 }
-
-    return (
-        <ChakraBox
-            w={expanded ? expandedWidth : baseWidth}
-            h={expanded ? expandedHeight : baseHeight}
-            layout
-        >
-            <Map toggleMap={toggleMap} />
-        </ChakraBox>
-    )
+const transition = {
+    enter: { duration: 1.0 },
 }
 
 function App() {
     const api = useAPI()
+    const challengeID = '652306b1468ca9673f94a940'
+    const userID = 'WPhWvqsqa5b9m7JO003A97FPMGo2'
+    const [challenge, setChallenge] = useState<Challenge>()
+    const [progress, setProgress] = useState<Progress>()
 
     useEffect(() => {
-        api.get('/health')
+        api.get<Challenge>(`/challenges/${challengeID}`)
             .then((res) => {
-                console.log(res.data)
+                setChallenge(res.data)
             })
             .catch((err) => {
                 console.log(err)
             })
-    }, [])
 
-    const transition = {
-        enter: { duration: 1.0 },
-    }
+        api.get<Progress>(
+            `/challenges/${challengeID}/members/${userID}/progress`
+        )
+            .then((res) => {
+                setProgress(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [api, challengeID, userID])
 
     return (
         <SlideFade in transition={transition}>
@@ -72,7 +51,10 @@ function App() {
                             </ChakraBox>
 
                             <ChakraBox w="full" layout>
-                                <Stats />
+                                <Stats
+                                    progress={progress}
+                                    challenge={challenge}
+                                />
                             </ChakraBox>
                         </VStack>
                         <ChakraBox flex="3" layout>

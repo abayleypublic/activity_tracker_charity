@@ -84,10 +84,12 @@ interface MapProps {
     lines?: Array<Line>
     markers?: Array<Marker>
     center: [number, number]
+    zoom?: number
+    showExpand?: boolean
 }
 
 const Map: React.FC<MapProps> = (props) => {
-    const defaultOptions = { color: 'lime' }
+    const defaultOptions = { color: 'dodgerblue' }
 
     const toggleExpanded = () => {
         props.toggleMap()
@@ -99,7 +101,7 @@ const Map: React.FC<MapProps> = (props) => {
         <MapContainer
             style={{ height: '100%', width: '100%' }}
             center={(center && center.position) || props.center}
-            zoom={13}
+            zoom={props.zoom || 13}
             scrollWheelZoom={false}
         >
             <TileLayer
@@ -129,7 +131,9 @@ const Map: React.FC<MapProps> = (props) => {
                     />
                 ))}
 
-            <ExpandButton position={'topright'} toggle={toggleExpanded} />
+            {props.showExpand && (
+                <ExpandButton position={'topright'} toggle={toggleExpanded} />
+            )}
             <Refresher />
         </MapContainer>
     )

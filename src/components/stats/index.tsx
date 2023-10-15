@@ -28,15 +28,15 @@ const Stats: React.FC<StatsProps> = (props) => {
             <VStack>
                 <Text>Progress: {props.progress.percent.toFixed(2)}%</Text>
                 <Text>
-                    Covered: {props.progress.distanceCovered.toFixed(2)}Km
+                    Covered: {props.progress.distanceCovered.toFixed(2)} km
                 </Text>
                 <Text>
                     Remaining:{' '}
                     {(
                         props.challenge.target.totalDistance -
                         props.progress.distanceCovered
-                    ).toFixed(2)}
-                    Km
+                    ).toFixed(2)}{' '}
+                    km
                 </Text>
                 <Text>
                     Required Avg / Week:{' '}
@@ -46,8 +46,8 @@ const Stats: React.FC<StatsProps> = (props) => {
                             moment(moment.now()),
                             moment(props.challenge.endDate)
                         )
-                    ).toFixed(2)}
-                    Km
+                    ).toFixed(2)}{' '}
+                    km
                 </Text>
             </VStack>
         )

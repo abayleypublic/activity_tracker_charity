@@ -1,3 +1,12 @@
+interface LatLng {
+    lat: number
+    lng: number
+}
+
+interface Waypoint {
+    latlng: LatLng
+}
+
 interface Challenge {
     id: string
     name: string
@@ -10,12 +19,7 @@ interface Challenge {
     target: {
         type: string
         route: {
-            waypoints: {
-                latlng: {
-                    lat: number
-                    lng: number
-                }
-            }[]
+            waypoints: Array<Waypoint>
         }
         totalDistance: number
     }

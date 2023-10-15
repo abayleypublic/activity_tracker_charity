@@ -20,8 +20,7 @@ const Profile = () => {
             <VStack alignItems={'center'} as={motion.div} layout="position">
                 <AspectRatio minW={160} maxW={200} w={'80%'} ratio={1} mt={4}>
                     <Image
-                        borderWidth={'1px'}
-                        borderStyle={'solid'}
+                        border={'2px solid'}
                         borderRadius="full"
                         src={profilePic}
                         alt="Austin Bayley"

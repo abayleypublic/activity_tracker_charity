@@ -1,7 +1,20 @@
-import { MapContainer, TileLayer, Polyline, useMap } from 'react-leaflet'
+import {
+    MapContainer,
+    TileLayer,
+    Polyline,
+    useMap,
+    Marker,
+    Popup,
+    Circle,
+} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import './style.css'
-import { LatLngExpression } from 'leaflet'
+import {
+    IconOptions,
+    LatLngExpression,
+    Icon as LeafletIcon,
+    PathOptions,
+} from 'leaflet'
 import { Container, Icon, IconButton } from '@chakra-ui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExpand } from '@fortawesome/free-solid-svg-icons'
@@ -54,27 +67,38 @@ const Refresher = () => {
     return <Container />
 }
 
+export interface Line {
+    positions: Array<[number, number]>
+    options?: PathOptions
+}
+
+export interface Marker {
+    position: [number, number]
+    icon?: IconOptions
+    description?: string
+    panTo?: boolean
+}
+
 interface MapProps {
     toggleMap: () => void
+    lines?: Array<Line>
+    markers?: Array<Marker>
+    center: [number, number]
 }
 
 const Map: React.FC<MapProps> = (props) => {
-    const limeOptions = { color: 'lime' }
-
-    const polyline = [
-        [51.505, -0.09],
-        [51.51, -0.1],
-        [51.51, -0.12],
-    ] as Array<LatLngExpression>
+    const defaultOptions = { color: 'lime' }
 
     const toggleExpanded = () => {
         props.toggleMap()
     }
 
+    const center = props.markers?.filter((marker) => marker.panTo)[0]
+
     return (
         <MapContainer
             style={{ height: '100%', width: '100%' }}
-            center={[51.505, -0.09]}
+            center={(center && center.position) || props.center}
             zoom={13}
             scrollWheelZoom={false}
         >
@@ -83,8 +107,29 @@ const Map: React.FC<MapProps> = (props) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
+            {props.markers &&
+                props.markers.map((marker) => (
+                    <Marker
+                        key={marker.position.toString()}
+                        position={marker.position}
+                        icon={marker.icon && new LeafletIcon(marker.icon)}
+                    >
+                        {marker.description && (
+                            <Popup>{marker.description}</Popup>
+                        )}
+                    </Marker>
+                ))}
+
+            {props.lines &&
+                props.lines.map((line) => (
+                    <Polyline
+                        key={line.positions.toString()}
+                        pathOptions={line.options || defaultOptions}
+                        positions={line.positions}
+                    />
+                ))}
+
             <ExpandButton position={'topright'} toggle={toggleExpanded} />
-            <Polyline pathOptions={limeOptions} positions={polyline} />
             <Refresher />
         </MapContainer>
     )

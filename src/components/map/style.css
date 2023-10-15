@@ -1,4 +1,4 @@
 /* Need this to keep attribution message displayed on map if corners are rounded*/
 .leaflet-control-attribution {
-    padding-right: 24px;
+    padding-right: 8px;
 }

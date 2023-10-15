@@ -46,7 +46,10 @@ function App() {
                         <VStack>
                             <ChakraBox flex="1" layout>
                                 <Card overflow={'clip'} p={0}>
-                                    <MapBox />
+                                    <MapBox
+                                        progress={progress}
+                                        challenge={challenge}
+                                    />
                                 </Card>
                             </ChakraBox>
 

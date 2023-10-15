@@ -6,7 +6,7 @@ import Profile from '../profile'
 import Stats from '../stats'
 
 export const base: React.FC<LayoutProps> = (props) => (
-    <VStack p={8} gap={4}>
+    <VStack p={[2, 4, 8]} gap={4}>
         <Card>
             <ChakraBox layout>
                 <Profile />

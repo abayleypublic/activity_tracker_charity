@@ -22,8 +22,8 @@ const MapBox: React.FC<MapBoxProps> = (props) => {
     const baseFactor = 0.5
     const expandedFactor = 0.55
 
-    const baseWidth = { base: 300, sm: 400, md: 700, lg: 300 }
-    const baseHeight = { base: 300, sm: 400, md: 500, lg: height * baseFactor }
+    const baseWidth = { base: 240, sm: 400, md: 696, lg: 320 }
+    const baseHeight = { base: 240, sm: 400, md: 522, lg: height * baseFactor }
     const expandedWidth = { lg: 600 }
     const expandedHeight = { lg: height * expandedFactor }
 

@@ -1,11 +1,7 @@
-import { Card, Center, HStack, SlideFade, VStack } from '@chakra-ui/react'
-import Profile from './components/profile'
-import Stats from './components/stats'
-import { LayoutGroup } from 'framer-motion'
+import { SlideFade } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import useAPI from './hooks/api'
-import ChakraBox from './components/chakrabox'
-import MapBox from './components/mapbox'
+import Layout from './components/layout'
 
 const transition = {
     enter: { duration: 1.0 },
@@ -40,32 +36,7 @@ function App() {
 
     return (
         <SlideFade in transition={transition}>
-            <Center w={'100vw'} minH={'100vh'} alignItems={'start'} p={8}>
-                <HStack alignItems={'start'} maxW={'container.lg'} w="100%">
-                    <LayoutGroup>
-                        <VStack>
-                            <ChakraBox flex="1" layout>
-                                <Card overflow={'clip'} p={0}>
-                                    <MapBox
-                                        progress={progress}
-                                        challenge={challenge}
-                                    />
-                                </Card>
-                            </ChakraBox>
-
-                            <ChakraBox w="full" layout>
-                                <Stats
-                                    progress={progress}
-                                    challenge={challenge}
-                                />
-                            </ChakraBox>
-                        </VStack>
-                        <ChakraBox flex="3" layout>
-                            <Profile />
-                        </ChakraBox>
-                    </LayoutGroup>
-                </HStack>
-            </Center>
+            <Layout challenge={challenge} progress={progress} />
         </SlideFade>
     )
 }

@@ -10,6 +10,7 @@ import {
     IconButton,
     useColorMode,
     Text,
+    Box,
 } from '@chakra-ui/react'
 import profilePic from '../../assets/me.jpeg'
 import { motion } from 'framer-motion'
@@ -17,7 +18,7 @@ import { FaInstagram, FaMoneyBill, FaStrava } from 'react-icons/fa'
 
 const Profile = () => {
     return (
-        <Card as={motion.div}>
+        <Box as={motion.div}>
             <VStack
                 alignItems={'center'}
                 as={motion.div}
@@ -40,7 +41,7 @@ const Profile = () => {
                 <HStack>
                     <Link href={'https://google.com'} isExternal>
                         <Button
-                            colorScheme="purple"
+                            colorScheme="green"
                             style={{ textDecoration: 'none' }}
                             leftIcon={<FaMoneyBill />}
                         >
@@ -127,7 +128,7 @@ const Profile = () => {
                     :D
                 </Text>
             </VStack>
-        </Card>
+        </Box>
     )
 }
 

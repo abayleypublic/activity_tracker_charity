@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import ChakraBox from './chakrabox'
 import Map, { Line, Marker } from './map'
-import { Skeleton, useBreakpoint, useBreakpointValue } from '@chakra-ui/react'
-import { LatLngExpression, Icon as LeafletIcon, PathOptions } from 'leaflet'
+import { Skeleton, useBreakpointValue } from '@chakra-ui/react'
 import ProfilePic from '../assets/me.jpeg'
 
 interface MapBoxProps {
@@ -19,13 +18,12 @@ const MapBox: React.FC<MapBoxProps> = (props) => {
     const showExpand = useBreakpointValue({ base: false, lg: true })
     const isExpanded = useBreakpointValue({ base: false, lg: expanded })
 
-    const width = screen.width
     const height = screen.height
     const baseFactor = 0.5
-    const expandedFactor = 0.6
+    const expandedFactor = 0.55
 
-    const baseWidth = { base: 300, sm: 400, lg: 300 }
-    const baseHeight = { base: 300, sm: 400, lg: height * baseFactor }
+    const baseWidth = { base: 300, sm: 400, md: 700, lg: 300 }
+    const baseHeight = { base: 300, sm: 400, md: 500, lg: height * baseFactor }
     const expandedWidth = { lg: 600 }
     const expandedHeight = { lg: height * expandedFactor }
 

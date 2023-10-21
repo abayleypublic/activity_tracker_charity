@@ -92,8 +92,6 @@ const MapBox: React.FC<MapBoxProps> = (props) => {
         ),
     }
 
-    console.log(line)
-
     const marker: Marker = {
         position: [
             props.progress.location.latlng.lat,

@@ -1,11 +1,10 @@
 import {
     Card,
-    Container,
     Heading,
     Skeleton,
     VStack,
-    Wrap,
     Text,
+    Divider,
 } from '@chakra-ui/react'
 import moment, { Moment } from 'moment'
 
@@ -57,6 +56,7 @@ const Stats: React.FC<StatsProps> = (props) => {
         <Card w={'full'} h={'full'} p={2}>
             <VStack alignItems={'center'}>
                 <Heading size="md">Stats</Heading>
+                <Divider />
                 {content()}
             </VStack>
         </Card>

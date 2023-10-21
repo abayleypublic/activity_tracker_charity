@@ -11,6 +11,7 @@ import {
     useColorMode,
     Text,
     Box,
+    Divider,
 } from '@chakra-ui/react'
 import profilePic from '../../assets/me.jpeg'
 import { motion } from 'framer-motion'
@@ -58,6 +59,8 @@ const Profile = () => {
                         <IconButton icon={<FaStrava />} aria-label={'Strava'} />
                     </Link>
                 </HStack>
+
+                <Divider p={2} />
 
                 <Text as={'p'}>
                     Hello and welcome to my foolish endeavour! Over the course

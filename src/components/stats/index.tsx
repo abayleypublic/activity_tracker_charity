@@ -40,7 +40,8 @@ const Stats: React.FC<StatsProps> = (props) => {
                 <Text>
                     Required Avg / Week:{' '}
                     {(
-                        props.challenge.target.totalDistance /
+                        (props.challenge.target.totalDistance -
+                            props.progress.distanceCovered) /
                         weeksBetween(
                             moment(moment.now()),
                             moment(props.challenge.endDate)

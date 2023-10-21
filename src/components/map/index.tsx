@@ -5,19 +5,14 @@ import {
     useMap,
     Marker,
     Popup,
-    Circle,
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import './style.css'
-import {
-    IconOptions,
-    LatLngExpression,
-    Icon as LeafletIcon,
-    PathOptions,
-} from 'leaflet'
+import { IconOptions, Icon as LeafletIcon, PathOptions } from 'leaflet'
 import { Container, Icon, IconButton } from '@chakra-ui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExpand } from '@fortawesome/free-solid-svg-icons'
+import { faCompress, faExpand } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
 
 const POSITION_CLASSES: { [key: string]: string } = {
     bottomleft: 'leaflet-bottom leaflet-left',
@@ -29,6 +24,7 @@ const POSITION_CLASSES: { [key: string]: string } = {
 interface ExpandButtonProps {
     position: string
     toggle: () => void
+    expanded: boolean
 }
 
 const ExpandButton: React.FC<ExpandButtonProps> = (props) => {
@@ -46,7 +42,12 @@ const ExpandButton: React.FC<ExpandButtonProps> = (props) => {
                 <IconButton
                     backgroundColor={'white'}
                     color={'black'}
-                    icon={<Icon as={FontAwesomeIcon} icon={faExpand} />}
+                    icon={
+                        <Icon
+                            as={FontAwesomeIcon}
+                            icon={props.expanded ? faCompress : faExpand}
+                        />
+                    }
                     aria-label={'Expand Map'}
                     onClick={props.toggle}
                 />
@@ -90,8 +91,10 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = (props) => {
     const defaultOptions = { color: 'dodgerblue' }
+    const [expanded, setExpanded] = useState(false)
 
     const toggleExpanded = () => {
+        setExpanded(!expanded)
         props.toggleMap()
     }
 
@@ -132,7 +135,11 @@ const Map: React.FC<MapProps> = (props) => {
                 ))}
 
             {props.showExpand && (
-                <ExpandButton position={'topright'} toggle={toggleExpanded} />
+                <ExpandButton
+                    position={'topright'}
+                    toggle={toggleExpanded}
+                    expanded={expanded}
+                />
             )}
             <Refresher />
         </MapContainer>

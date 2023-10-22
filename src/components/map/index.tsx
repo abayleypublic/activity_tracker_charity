@@ -11,7 +11,11 @@ import './style.css'
 import { IconOptions, Icon as LeafletIcon, PathOptions } from 'leaflet'
 import { Container, Icon, IconButton } from '@chakra-ui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCompress, faExpand } from '@fortawesome/free-solid-svg-icons'
+import {
+    faArrowsToDot,
+    faCompress,
+    faExpand,
+} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 const POSITION_CLASSES: { [key: string]: string } = {
@@ -20,6 +24,8 @@ const POSITION_CLASSES: { [key: string]: string } = {
     topleft: 'leaflet-top leaflet-left',
     topright: 'leaflet-top leaflet-right',
 }
+
+const DEFAULT_ZOOM = 12
 
 interface ExpandButtonProps {
     position: string
@@ -38,6 +44,7 @@ const ExpandButton: React.FC<ExpandButtonProps> = (props) => {
                 className="leaflet-control leaflet-bar"
                 w="min-content"
                 p={0}
+                backgroundColor={'white'}
             >
                 <IconButton
                     backgroundColor={'white'}
@@ -56,12 +63,51 @@ const ExpandButton: React.FC<ExpandButtonProps> = (props) => {
     )
 }
 
+interface CentreButtonProps {
+    position: string
+    centre?: [number, number]
+}
+
+const CentreButton: React.FC<CentreButtonProps> = (props) => {
+    const positionClass =
+        (props.position && POSITION_CLASSES[props.position]) ||
+        POSITION_CLASSES.bottomright
+
+    const map = useMap()
+
+    const centre = () => {
+        if (!props.centre) return
+        map.setView(props.centre, DEFAULT_ZOOM, {
+            animate: true,
+        })
+    }
+
+    return (
+        <Container className={positionClass} w="min-content" p={0}>
+            <Container
+                className="leaflet-control leaflet-bar"
+                w="min-content"
+                p={0}
+                backgroundColor={'white'}
+            >
+                <IconButton
+                    backgroundColor={'white'}
+                    color={'black'}
+                    icon={<Icon as={FontAwesomeIcon} icon={faArrowsToDot} />}
+                    aria-label={'Expand Map'}
+                    onClick={centre}
+                />
+            </Container>
+        </Container>
+    )
+}
+
 const Refresher = () => {
     const map = useMap()
 
     setTimeout(() => {
         map.invalidateSize()
-        map.setView(map.getCenter(), map.getZoom(), {
+        map.setView(map.getCenter(), DEFAULT_ZOOM, {
             animate: true,
         })
     }, 100)
@@ -87,6 +133,7 @@ interface MapProps {
     center: [number, number]
     zoom?: number
     showExpand?: boolean
+    showCentre?: boolean
 }
 
 const Map: React.FC<MapProps> = (props) => {
@@ -104,7 +151,7 @@ const Map: React.FC<MapProps> = (props) => {
         <MapContainer
             style={{ height: '100%', width: '100%' }}
             center={(center && center.position) || props.center}
-            zoom={props.zoom || 13}
+            zoom={props.zoom || DEFAULT_ZOOM}
             scrollWheelZoom={false}
         >
             <TileLayer
@@ -141,6 +188,14 @@ const Map: React.FC<MapProps> = (props) => {
                     expanded={expanded}
                 />
             )}
+
+            {props.showCentre && (
+                <CentreButton
+                    position={'bottomleft'}
+                    centre={center?.position}
+                />
+            )}
+
             <Refresher />
         </MapContainer>
     )

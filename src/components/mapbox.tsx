@@ -161,6 +161,7 @@ const MapBox: React.FC<MapBoxProps> = (props) => {
                 center={[51.5014708012926, -0.14184707849440084]}
                 zoom={11}
                 showExpand={showExpand}
+                showCentre
             />
         </ChakraBox>
     )

@@ -7,6 +7,9 @@
       "hosting": {
         "stg": [
           "activity-tracker-staging"
+        ],
+        "prod": [
+          "activity-tracker-bfaaa"
         ]
       }
     }

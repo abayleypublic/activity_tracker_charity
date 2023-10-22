@@ -17,3 +17,4 @@ jobs:
                   firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACTIVITY_TRACKER_BFAAA }}'
                   channelId: live
                   projectId: activity-tracker-bfaaa
+                  target: prod

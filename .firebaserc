@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "activity-tracker-bfaaa"
-  }
+  },
+  "targets": {
+    "activity-tracker-bfaaa": {
+      "hosting": {
+        "stg": [
+          "activity-tracker-staging"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

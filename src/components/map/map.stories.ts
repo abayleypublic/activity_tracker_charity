@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import Map from './'
 
@@ -15,8 +15,3 @@ const meta = {
 } satisfies Meta<typeof Map>
 
 export default meta
-type Story = StoryObj<typeof meta>
-
-// export const Primary: Story = {
-//     args: {},
-// }

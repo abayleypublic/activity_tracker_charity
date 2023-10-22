@@ -1,5 +1,4 @@
 import {
-    Card,
     VStack,
     Image,
     AspectRatio,
@@ -8,7 +7,6 @@ import {
     Link,
     HStack,
     IconButton,
-    useColorMode,
     Text,
     Box,
     Divider,

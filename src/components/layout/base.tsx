@@ -1,4 +1,4 @@
-import { Box, Card, HStack, VStack } from '@chakra-ui/react'
+import { Card, VStack } from '@chakra-ui/react'
 import { LayoutProps } from '.'
 import ChakraBox from '../chakrabox'
 import MapBox from '../mapbox'

@@ -1,5 +1,5 @@
 import { Center, HStack, VStack, Card } from '@chakra-ui/react'
-import { LayoutGroup, progress } from 'framer-motion'
+import { LayoutGroup } from 'framer-motion'
 import ChakraBox from '../chakrabox'
 import MapBox from '../mapbox'
 import Profile from '../profile'

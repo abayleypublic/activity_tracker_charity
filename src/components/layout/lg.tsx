@@ -7,7 +7,7 @@ import Stats from '../stats'
 import { LayoutProps } from '.'
 
 export const lg: React.FC<LayoutProps> = (props) => (
-    <Center w={'100vw'} h={'100vh'} alignItems={'start'} p={8}>
+    <Center w={'100vw'} alignItems={'start'} p={8}>
         <LayoutGroup>
             <HStack
                 alignItems={'start'}
@@ -15,7 +15,7 @@ export const lg: React.FC<LayoutProps> = (props) => (
                 w={'100%'}
                 h={'100%'}
             >
-                <VStack>
+                <VStack position={'sticky'} top={4}>
                     <ChakraBox layout>
                         <Card overflow={'clip'} p={0}>
                             <MapBox

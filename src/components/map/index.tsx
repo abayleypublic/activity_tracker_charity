@@ -107,7 +107,7 @@ const Refresher = () => {
 
     setTimeout(() => {
         map.invalidateSize()
-        map.setView(map.getCenter(), DEFAULT_ZOOM, {
+        map.setView(map.getCenter(), map.getZoom(), {
             animate: true,
         })
     }, 100)

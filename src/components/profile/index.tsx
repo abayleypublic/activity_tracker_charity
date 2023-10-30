@@ -35,7 +35,7 @@ const Profile = () => {
                 </AspectRatio>
 
                 <Heading size={'xl'} textAlign={'center'}>
-                    Austin Runs to Rome
+                    Austin's Roam to Rome
                 </Heading>
                 <HStack>
                     <Link href={'https://google.com'} isExternal>

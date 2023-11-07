@@ -6,7 +6,14 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [ {
+      "source": "/api",
+      "run": {
+        "serviceId": "api",
+        "region": "europe-west1" 
+      }
+    } ]
   }, {
     "target":"stg", 
     "public": "dist",
@@ -14,6 +21,13 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [ {
+      "source": "/api",
+      "run": {
+        "serviceId": "api",
+        "region": "europe-west1" 
+      }
+    } ]
   }]
 }

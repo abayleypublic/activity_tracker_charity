@@ -5,6 +5,7 @@ import MapBox from '../mapbox'
 import Profile from '../profile'
 import Stats from '../stats'
 import { LayoutProps } from '.'
+import Footer from '../footer'
 
 export const lg: React.FC<LayoutProps> = (props) => (
     <Center w={'100vw'} alignItems={'start'} p={8}>
@@ -30,6 +31,10 @@ export const lg: React.FC<LayoutProps> = (props) => (
                             progress={props.progress}
                             challenge={props.challenge}
                         />
+                    </ChakraBox>
+
+                    <ChakraBox bottom={0} h={'full'} w={'full'} layout>
+                        <Footer />
                     </ChakraBox>
                 </VStack>
                 <Card overflow={'auto'} h={'100%'}>

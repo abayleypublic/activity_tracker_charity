@@ -191,7 +191,7 @@ const Map: React.FC<MapProps> = (props) => {
 
             {props.showCentre && (
                 <CentreButton
-                    position={'bottomleft'}
+                    position={props.showExpand ? 'bottomleft' : 'topright'}
                     centre={center?.position}
                 />
             )}

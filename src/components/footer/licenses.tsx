@@ -12,6 +12,7 @@ import {
     useDisclosure,
     Divider,
     Text,
+    useColorModeValue,
 } from '@chakra-ui/react'
 import license from '../../assets/LICENSE.txt'
 import { useEffect, useState } from 'react'
@@ -20,6 +21,7 @@ import { FaList } from 'react-icons/fa'
 const Licenses = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [licenses, setLicenses] = useState<string>('')
+    const bgColor = useColorModeValue('white', 'gray.700')
 
     useEffect(() => {
         fetch(license).then((res) =>
@@ -45,7 +47,7 @@ const Licenses = () => {
                     <ModalHeader
                         position={'sticky'}
                         top={0}
-                        backgroundColor={'white'}
+                        backgroundColor={bgColor}
                     >
                         Licenses
                         <ModalCloseButton />

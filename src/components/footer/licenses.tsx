@@ -29,8 +29,6 @@ const Licenses = () => {
         )
     }, [])
 
-    console.log(licenses)
-
     return (
         <>
             <Tooltip label="Licenses" hasArrow>

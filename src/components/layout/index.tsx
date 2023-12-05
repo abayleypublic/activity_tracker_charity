@@ -1,4 +1,4 @@
-import { Box, useBreakpointValue } from '@chakra-ui/react'
+import { useBreakpointValue } from '@chakra-ui/react'
 import { base } from './base'
 import { lg } from './lg'
 

@@ -72,7 +72,7 @@ const Profile = () => {
                         >
                             <IconButton
                                 icon={<FaFlickr />}
-                                aria-label={'Instagram'}
+                                aria-label={'Flickr'}
                             />
                         </Link>
                     </Tooltip>
@@ -185,11 +185,13 @@ const Profile = () => {
                         </Link>{' '}
                         to track activities although I am terrible at
                         remembering to start / stop tracking so don't expect to
-                        see everything on there. All distance covered will be
-                        shown on the map though so that is the source of truth!
-                        The end date will be 1 year after the start date with
-                        the start date anticipated to be 01/01/2024 (assuming
-                        all goes well with launching this site!).
+                        see everything on there. In cases where I forget, Apple
+                        Health data will be used. The main aim for this
+                        challenge is consistency so don't expect this to be done
+                        in record time! The end date will be 1 year after the
+                        start date with the start date anticipated to be
+                        01/01/2024 (assuming all goes well with launching this
+                        site!).
                     </ListItem>
                 </UnorderedList>
 
@@ -201,16 +203,33 @@ const Profile = () => {
                     too difficult, I shall be working harder for it ;) I have a
                     feeling that consistency will be the real challenge but I
                     know that having a target to hit with that challenge being
-                    about getting outside & moving will be a great motivator for
-                    me & hopefully a great boost to my mental health too.
+                    about getting outside & moving for a cause will be a great
+                    motivator for me & hopefully a big boost to my mental health
+                    too.
                 </Text>
 
                 <Text>
                     Anyways, thank you very much for reading! It's a great cause
-                    so please do donate, follow along on socials, check back
-                    here to see my progress on the map & reach out if you fancy
-                    a walk / run / hop / skip / whatever because I have a
-                    feeling this will be more fun with friends :D
+                    so please do donate, follow along on socials (
+                    <Link
+                        isExternal
+                        href={'https://www.strava.com/athletes/108989575'}
+                        color={linkColour}
+                    >
+                        Strava
+                    </Link>{' '}
+                    linked for tracking &{' '}
+                    <Link
+                        href={'https://flickr.com/people/193758503@N05/'}
+                        isExternal
+                        color={linkColour}
+                    >
+                        Flickr
+                    </Link>{' '}
+                    for pictures taken along the way), check back here to see my
+                    progress on the map & reach out if you fancy a walk / run /
+                    hop / skip / whatever because I have a feeling this will be
+                    more fun with friends :D
                 </Text>
             </VStack>
         </Box>

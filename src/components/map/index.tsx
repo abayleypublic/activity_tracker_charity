@@ -110,7 +110,7 @@ const Refresher = () => {
         map.setView(m.getCenter(), m.getZoom(), {
             animate: true,
         })
-    }, 100)
+    }, 200)
     return <Container />
 }
 

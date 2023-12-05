@@ -1,11 +1,9 @@
 import {
-    Button,
     IconButton,
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
-    ModalFooter,
     ModalHeader,
     ModalOverlay,
     Tooltip,
@@ -36,9 +34,9 @@ const Policy = () => {
 
     return (
         <>
-            <Tooltip label="Policy" hasArrow>
+            <Tooltip label="Privacy" hasArrow>
                 <IconButton
-                    aria-label={'open policy information modal'}
+                    aria-label={'open privacy information modal'}
                     onClick={onOpen}
                     icon={<FaInfo />}
                 />
@@ -52,26 +50,24 @@ const Policy = () => {
                         top={0}
                         backgroundColor={bgColor}
                     >
-                        Policy
+                        Privacy
                         <ModalCloseButton />
                     </ModalHeader>
 
                     <ModalBody>
                         <Heading size="sm">General</Heading>
                         <Text mb={2}>
-                            Continued use of this website constitutes acceptance
-                            of this policy. This website enables user input of
-                            "activity" information to track progress against a
-                            defined "target" which is encapsulated by a
-                            "challenge". The scope of this site is for a single,
-                            pre-informed, user to track activity data against a
-                            single, pre-made, challenge for the purpose of
-                            raising money for charity. Other users will not be
-                            expected or able to input any data or sign up to the
-                            platform. Data is stored securely, is available to
-                            the user to whom it pertains with information
-                            relevant to this challenge being made available to
-                            all by a public API. No data will be shared or sold.
+                            This website enables user input of "activity"
+                            information to track progress against a defined
+                            "target" which is encapsulated by a "challenge".
+                            Currently this is only enabled for myself (Austin
+                            Bayley) & a single challenge. For all users other
+                            than myself (Austin Bayley), there is no expectation
+                            or functionality to input personal information with
+                            personal information only being gathered as part of
+                            the logging process which is described below. Data
+                            is stored securely and no data will be shared or
+                            sold.
                         </Text>
                         <Heading size="sm">Cookies</Heading>
                         <Text mb={2}>
@@ -89,12 +85,6 @@ const Policy = () => {
                             days.
                         </Text>
                     </ModalBody>
-
-                    <ModalFooter>
-                        <Button colorScheme="blue" mr={3} onClick={closed}>
-                            Close
-                        </Button>
-                    </ModalFooter>
                 </ModalContent>
             </Modal>
         </>

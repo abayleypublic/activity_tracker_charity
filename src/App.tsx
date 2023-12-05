@@ -1,4 +1,11 @@
-import { Flex, HStack, SlideFade, Spacer, Text } from '@chakra-ui/react'
+import {
+    Flex,
+    HStack,
+    SlideFade,
+    Spacer,
+    Text,
+    useColorModeValue,
+} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import useAPI from './hooks/api'
 import Layout from './components/layout'
@@ -17,9 +24,7 @@ const PolicyDisplay = () => {
     return (
         <ChakraBox layout w="full">
             <HStack maxW={'container.lg'} margin={'0 auto'} px={2}>
-                <Text maxW={'container.lg'} textAlign={'center'}>
-                    Privacy Policy: functional cookies, logging, etc. {'-->'}
-                </Text>
+                <Text textAlign={'center'}>Privacy Notice</Text>
                 <Spacer />
                 <Policy />
             </HStack>
@@ -64,7 +69,7 @@ function App() {
                     bottom={0}
                     position={'sticky'}
                     w={'full'}
-                    backgroundColor={'blue.700'}
+                    backgroundColor={useColorModeValue('blue.200', 'blue.600')}
                     py={1}
                 >
                     <PolicyDisplay />

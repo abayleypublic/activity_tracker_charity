@@ -125,7 +125,7 @@ const MapBox: React.FC<MapBoxProps> = (props) => {
     }
 
     const start = props.challenge.target.route.waypoints[0].latlng
-    const end = props.challenge.target.route.waypoints.slice(-1)[0].latlng
+    const end = props.challenge.target.route.waypoints[1].latlng
 
     const line: Line = {
         positions: greatCirclePoints(

@@ -94,8 +94,8 @@ const Profile = () => {
                 <Text as={'p'}>
                     Hello and welcome to my foolish endeavour! Over the course
                     of the next year I will be travelling the distance from
-                    Buckingham Palace to the Colosseum in Rome by foot to raise
-                    money for{' '}
+                    Buckingham Palace to the Colosseum in Rome and back again by
+                    foot to raise money for{' '}
                     <Link
                         isExternal
                         href={'https://www.mind.org.uk/'}
@@ -168,14 +168,13 @@ const Profile = () => {
                         How's it going to work? Over the course of the next year
                         I will be logging foot-based travel activities (walking,
                         running, hiking, hopping, skipping etc.) to track my
-                        progress along a route as the crow would fly between the
-                        locations listed above. I will only be logging dedicated
-                        activities, by which I mean things that are not part of
-                        the essential day-to-day cycle of life i.e. a
-                        non-essential walk around the block, a hike up a
-                        mountain or a run on a treadmill are all valid but a
-                        saunter to or around the shops to pick up a pint of milk
-                        is not. I plan to use{' '}
+                        progress along a route as the crow would fly to & from
+                        the locations listed above. I will only be logging
+                        dedicated activities, by which I mean things that are
+                        not part of everyday life i.e. a non-essential walk
+                        around the block, a hike up a mountain or a run on a
+                        treadmill are all valid but a saunter to or around the
+                        shops to pick up a pint of milk is not. I plan to use{' '}
                         <Link
                             isExternal
                             href={'https://www.strava.com/athletes/108989575'}
@@ -186,21 +185,18 @@ const Profile = () => {
                         to track activities although I am terrible at
                         remembering to start / stop tracking so don't expect to
                         see everything on there. In cases where I forget, Apple
-                        Health data will be used. The main aim for this
-                        challenge is consistency so don't expect this to be done
-                        in record time! The end date will be 1 year after the
-                        start date with the start date anticipated to be
-                        01/01/2024 (assuming all goes well with launching this
-                        site!).
+                        Health data will be used. The end date will be 1 year
+                        after the start date with the start date anticipated to
+                        be 01/01/2024 (assuming all goes well with launching
+                        this site!).
                     </ListItem>
                 </UnorderedList>
 
                 <Text>
-                    I can't say I have a perception on whether this will be easy
-                    or hard. Distance-wise, it is just over a half marathon /
-                    week which sounds quite challenging to me! If it happens to
-                    be too easy, I shall be making it more difficult & if it's
-                    too difficult, I shall be working harder for it ;) I have a
+                    Distance-wise, this equates to over a marathon / week which
+                    sounds quite challenging to me! If it happens to be too
+                    easy, I shall be making it more difficult & if it's too
+                    difficult, I shall be working harder for it ;) I have a
                     feeling that consistency will be the real challenge but I
                     know that having a target to hit with that challenge being
                     about getting outside & moving for a cause will be a great
@@ -210,7 +206,15 @@ const Profile = () => {
 
                 <Text>
                     Anyways, thank you very much for reading! It's a great cause
-                    so please do donate, follow along on socials (
+                    so please do{' '}
+                    <Link
+                        href={'https://google.com'}
+                        isExternal
+                        color={linkColour}
+                    >
+                        donate
+                    </Link>
+                    , follow along on socials (
                     <Link
                         isExternal
                         href={'https://www.strava.com/athletes/108989575'}

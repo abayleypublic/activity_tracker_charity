@@ -14,13 +14,14 @@ import {
     UnorderedList,
     ListItem,
     Spacer,
+    useColorModeValue,
 } from '@chakra-ui/react'
 import profilePic from '../../assets/me.jpeg'
 import { motion } from 'framer-motion'
 import { FaFlickr, FaMoneyBill, FaStrava } from 'react-icons/fa'
 
 const Profile = () => {
-    const linkColour = 'blue.600'
+    const linkColour = useColorModeValue('blue.600', 'blue.300')
 
     return (
         <Box as={motion.div}>

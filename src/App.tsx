@@ -1,4 +1,5 @@
 import {
+    Box,
     Flex,
     HStack,
     SlideFade,
@@ -61,21 +62,26 @@ function App() {
     }, [api, challengeID, userID])
 
     return (
-        <SlideFade in transition={transition}>
-            <Layout challenge={challenge} progress={progress} />
-            {ack != PolicyAcknowledgement.Yes && (
-                <Flex
-                    zIndex={1000}
-                    bottom={0}
-                    position={'sticky'}
-                    w={'full'}
-                    backgroundColor={useColorModeValue('blue.200', 'blue.600')}
-                    py={1}
-                >
-                    <PolicyDisplay />
-                </Flex>
-            )}
-        </SlideFade>
+        <Box minH={'100vh'}>
+            <SlideFade in transition={transition}>
+                <Layout challenge={challenge} progress={progress} />
+                {ack != PolicyAcknowledgement.Yes && (
+                    <Flex
+                        zIndex={1000}
+                        bottom={0}
+                        position={'sticky'}
+                        w={'full'}
+                        backgroundColor={useColorModeValue(
+                            'blue.200',
+                            'blue.600'
+                        )}
+                        py={1}
+                    >
+                        <PolicyDisplay />
+                    </Flex>
+                )}
+            </SlideFade>
+        </Box>
     )
 }
 

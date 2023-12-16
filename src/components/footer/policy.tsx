@@ -78,8 +78,8 @@ const Policy = () => {
                             <ListItem>Name: Austin Bayley</ListItem>
                             <ListItem>
                                 Email:{' '}
-                                <Link href="mailto:austinbayley.charity@gmail.com">
-                                    austinbayley.charity@gmail.com
+                                <Link href="mailto:roam@austinbayley.co.uk">
+                                    roam@austinbayley.co.uk
                                 </Link>
                             </ListItem>
                         </UnorderedList>

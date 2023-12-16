@@ -57,7 +57,12 @@ const Profile = () => {
                     Austin's Roam to Rome
                 </Heading>
                 <HStack>
-                    <Link href={'https://google.com'} isExternal>
+                    <Link
+                        href={
+                            'https://www.gofundme.com/f/roam-to-rome-for-mind'
+                        }
+                        isExternal
+                    >
                         <Button
                             colorScheme="green"
                             style={{ textDecoration: 'none' }}
@@ -172,10 +177,11 @@ const Profile = () => {
                         progress along a route as the crow would fly to & from
                         the locations listed above. I will only be logging
                         dedicated activities, by which I mean things that are
-                        not part of everyday life i.e. a non-essential walk
-                        around the block, a hike up a mountain or a run on a
-                        treadmill are all valid but a saunter to or around the
-                        shops to pick up a pint of milk is not. I plan to use{' '}
+                        non-essential foot based travel i.e. a walk around the
+                        block, a hike up a mountain, a run on a treadmill or
+                        walking a journey I would generally drive are all valid
+                        but a saunter around the shops to pick up a pint of milk
+                        or meandering around the office are not. I plan to use{' '}
                         <Link
                             isExternal
                             href={'https://www.strava.com/athletes/108989575'}
@@ -184,12 +190,13 @@ const Profile = () => {
                             Strava
                         </Link>{' '}
                         to track activities although I am terrible at
-                        remembering to start / stop tracking so don't expect to
-                        see everything on there. In cases where I forget, Apple
-                        Health data will be used. The end date will be 1 year
-                        after the start date with the start date anticipated to
-                        be 01/01/2024 (assuming all goes well with launching
-                        this site!).
+                        remembering to start / stop tracking & I may not log
+                        some things for privacy (e.g. my route to work) so don't
+                        expect to see everything on there. In cases where I
+                        forget or don't log it on Strava, Apple Health data will
+                        be used. The end date will be 1 year after the start
+                        date with the start date anticipated to be 01/01/2024
+                        (assuming all goes well with launching this site!).
                     </ListItem>
                 </UnorderedList>
 
@@ -209,7 +216,9 @@ const Profile = () => {
                     Anyways, thank you very much for reading! It's a great cause
                     so please do{' '}
                     <Link
-                        href={'https://google.com'}
+                        href={
+                            'https://www.gofundme.com/f/roam-to-rome-for-mind'
+                        }
                         isExternal
                         color={linkColour}
                     >

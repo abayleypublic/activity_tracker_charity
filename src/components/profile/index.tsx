@@ -15,6 +15,11 @@ import {
     ListItem,
     Spacer,
     useColorModeValue,
+    Popover,
+    PopoverArrow,
+    PopoverBody,
+    PopoverContent,
+    PopoverTrigger,
 } from '@chakra-ui/react'
 import profilePic from '../../assets/me.jpeg'
 import { motion } from 'framer-motion'
@@ -57,20 +62,51 @@ const Profile = () => {
                     Austin's Roam to Rome
                 </Heading>
                 <HStack>
-                    <Link
-                        href={
-                            'https://www.gofundme.com/f/roam-to-rome-for-mind'
-                        }
-                        isExternal
-                    >
-                        <Button
-                            colorScheme="green"
-                            style={{ textDecoration: 'none' }}
-                            leftIcon={<FaMoneyBill />}
-                        >
-                            Donate!
-                        </Button>
-                    </Link>
+                    <Popover trigger="hover">
+                        <PopoverTrigger>
+                            <Button
+                                colorScheme="green"
+                                style={{ textDecoration: 'none' }}
+                                leftIcon={<FaMoneyBill />}
+                            >
+                                Donate!
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent w={'min-content'}>
+                            <PopoverArrow />
+                            <PopoverBody>
+                                <HStack alignItems={'center'}>
+                                    <Link
+                                        href={
+                                            'https://www.gofundme.com/f/roam-to-rome-for-mind'
+                                        }
+                                        isExternal
+                                    >
+                                        <Button
+                                            colorScheme="green"
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            GoFundMe
+                                        </Button>
+                                    </Link>
+                                    <Link
+                                        href={
+                                            'https://cisco.benevity.org/campaigns/1702'
+                                        }
+                                        isExternal
+                                    >
+                                        <Button
+                                            colorScheme="blue"
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            Benevity (Cisco)
+                                        </Button>
+                                    </Link>
+                                </HStack>
+                            </PopoverBody>
+                        </PopoverContent>
+                    </Popover>
+
                     <Tooltip label="Flickr" hasArrow>
                         <Link
                             href={'https://flickr.com/people/193758503@N05/'}

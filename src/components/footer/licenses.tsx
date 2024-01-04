@@ -56,9 +56,24 @@ const Licenses = () => {
                             In the making of this site, I have had the pleasure
                             of using some truly wonderful libraries! Below is a
                             list of those that have gone into creating the UI
-                            and their licenses.
+                            and their licenses. I also used Twemoji for the
+                            favicon of this site.
                         </Text>
                         <Divider p={2} />
+                        <Text whiteSpace={'pre-wrap'}>
+                            Name: Twemoji <br />
+                            Link: https://twemoji.twitter.com/ <br />
+                            Copyright 2020 Twitter, Inc and other contributors{' '}
+                            <br />
+                            Code licensed under the MIT License:
+                            http://opensource.org/licenses/MIT <br />
+                            Graphics licensed under CC-BY 4.0:
+                            https://creativecommons.org/licenses/by/4.0/
+                            <br />
+                            <br />
+                            ---
+                            <br />
+                        </Text>
                         <Text whiteSpace={'pre-wrap'}>{licenses}</Text>
                     </ModalBody>
 

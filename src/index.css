@@ -1,0 +1,8 @@
+:root {
+    overflow-x: hidden;
+}
+
+.circular {
+    border-radius: 100%;
+    border: 2px solid;
+}

@@ -8,7 +8,7 @@ import { LayoutProps } from '.'
 import Footer from '../footer'
 
 export const lg: React.FC<LayoutProps> = (props) => (
-    <Center w={'100vw'} alignItems={'start'} p={8}>
+    <Center w={'100vw'} alignItems={'start'} py={8}>
         <LayoutGroup>
             <HStack
                 alignItems={'start'}

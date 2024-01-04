@@ -62,7 +62,7 @@ function App() {
     }, [api, challengeID, userID])
 
     return (
-        <Box minH={'100vh'}>
+        <Box minH={'100vh'} p={0}>
             <SlideFade in transition={transition}>
                 <Layout challenge={challenge} progress={progress} />
                 {ack != PolicyAcknowledgement.Yes && (

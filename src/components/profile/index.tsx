@@ -137,7 +137,7 @@ const Profile = () => {
                     Hello and welcome to my foolish endeavour! Over the course
                     of the next year I will be travelling the distance from
                     Buckingham Palace to the Colosseum in Rome and back again by
-                    foot to raise money for{' '}
+                    foot to raise money in aid of{' '}
                     <Link
                         isExternal
                         href={'https://www.mind.org.uk/'}

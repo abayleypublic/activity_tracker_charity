@@ -146,7 +146,7 @@ const Profile = () => {
                         Mind
                     </Link>
                     , a mental health charity. The idea is not to walk the whole
-                    distance in one go but to log activities throughtout 2024 to
+                    distance in one go but to log activities throughout 2024 to
                     make up the distance with progress being shown on this site.
                     I've added some detail below:
                 </Text>

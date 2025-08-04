@@ -1,13 +1,13 @@
 import { Center, HStack, VStack, Card } from '@chakra-ui/react'
 import { LayoutGroup } from 'framer-motion'
 import ChakraBox from '../chakrabox'
-import MapBox from '../mapbox'
+import MapBox from '../../features/challenges/components/mapbox'
 import Profile from '../profile'
-import Stats from '../stats'
+import Stats from '../../features/challenges/components/stats'
 import { LayoutProps } from '.'
 import Footer from '../footer'
 
-export const lg: React.FC<LayoutProps> = (props) => (
+export const lg = ({ progress, challenge }: LayoutProps) => (
     <Center w={'100vw'} alignItems={'start'} py={8}>
         <LayoutGroup>
             <HStack
@@ -19,18 +19,12 @@ export const lg: React.FC<LayoutProps> = (props) => (
                 <VStack position={'sticky'} top={4}>
                     <ChakraBox layout>
                         <Card overflow={'clip'} p={0}>
-                            <MapBox
-                                progress={props.progress}
-                                challenge={props.challenge}
-                            />
+                            <MapBox progress={progress} challenge={challenge} />
                         </Card>
                     </ChakraBox>
 
                     <ChakraBox w="full" layout>
-                        <Stats
-                            progress={props.progress}
-                            challenge={props.challenge}
-                        />
+                        <Stats progress={progress} challenge={challenge} />
                     </ChakraBox>
 
                     <ChakraBox bottom={0} h={'full'} w={'full'} layout>

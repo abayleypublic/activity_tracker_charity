@@ -33,10 +33,9 @@ interface ExpandButtonProps {
     expanded: boolean
 }
 
-const ExpandButton: React.FC<ExpandButtonProps> = (props) => {
+const ExpandButton = ({ position, toggle, expanded }: ExpandButtonProps) => {
     const positionClass =
-        (props.position && POSITION_CLASSES[props.position]) ||
-        POSITION_CLASSES.topright
+        (position && POSITION_CLASSES[position]) || POSITION_CLASSES.topright
 
     return (
         <Container className={positionClass} w="min-content" p={0}>
@@ -52,11 +51,11 @@ const ExpandButton: React.FC<ExpandButtonProps> = (props) => {
                     icon={
                         <Icon
                             as={FontAwesomeIcon}
-                            icon={props.expanded ? faCompress : faExpand}
+                            icon={expanded ? faCompress : faExpand}
                         />
                     }
                     aria-label={'Expand Map'}
-                    onClick={props.toggle}
+                    onClick={toggle}
                 />
             </Container>
         </Container>
@@ -68,16 +67,15 @@ interface CentreButtonProps {
     centre?: [number, number]
 }
 
-const CentreButton: React.FC<CentreButtonProps> = (props) => {
+const CentreButton = ({ position, centre }: CentreButtonProps) => {
     const positionClass =
-        (props.position && POSITION_CLASSES[props.position]) ||
-        POSITION_CLASSES.bottomright
+        (position && POSITION_CLASSES[position]) || POSITION_CLASSES.bottomright
 
     const map = useMap()
 
-    const centre = () => {
-        if (!props.centre) return
-        map.setView(props.centre, DEFAULT_ZOOM, {
+    const setCentre = () => {
+        if (!centre) return
+        map.setView(centre, DEFAULT_ZOOM, {
             animate: true,
         })
     }
@@ -95,7 +93,7 @@ const CentreButton: React.FC<CentreButtonProps> = (props) => {
                     color={'black'}
                     icon={<Icon as={FontAwesomeIcon} icon={faArrowsToDot} />}
                     aria-label={'Expand Map'}
-                    onClick={centre}
+                    onClick={setCentre}
                 />
             </Container>
         </Container>
@@ -138,22 +136,30 @@ interface MapProps {
     showCentre?: boolean
 }
 
-const Map: React.FC<MapProps> = (props) => {
+const Map = ({
+    toggleMap,
+    markers,
+    center,
+    zoom,
+    lines,
+    showCentre,
+    showExpand,
+}: MapProps) => {
     const defaultOptions = { color: 'dodgerblue' }
     const [expanded, setExpanded] = useState(false)
 
     const toggleExpanded = () => {
         setExpanded(!expanded)
-        props.toggleMap()
+        toggleMap()
     }
 
-    const center = props.markers?.filter((marker) => marker.panTo)[0]
+    const centerMarker = markers?.filter((marker) => marker.panTo)[0]
 
     return (
         <MapContainer
             style={{ height: '100%', width: '100%' }}
-            center={(center && center.position) || props.center}
-            zoom={props.zoom || DEFAULT_ZOOM}
+            center={(centerMarker && centerMarker.position) || center}
+            zoom={zoom || DEFAULT_ZOOM}
             scrollWheelZoom={false}
         >
             <TileLayer
@@ -161,8 +167,8 @@ const Map: React.FC<MapProps> = (props) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {props.markers &&
-                props.markers.map((marker) => (
+            {markers &&
+                markers.map((marker) => (
                     <Marker
                         key={marker.position.toString()}
                         position={marker.position}
@@ -174,8 +180,8 @@ const Map: React.FC<MapProps> = (props) => {
                     </Marker>
                 ))}
 
-            {props.lines &&
-                props.lines.map((line) => (
+            {lines &&
+                lines.map((line) => (
                     <Polyline
                         key={line.positions.toString()}
                         pathOptions={line.options || defaultOptions}
@@ -183,7 +189,7 @@ const Map: React.FC<MapProps> = (props) => {
                     />
                 ))}
 
-            {props.showExpand && (
+            {showExpand && (
                 <ExpandButton
                     position={'topright'}
                     toggle={toggleExpanded}
@@ -191,10 +197,10 @@ const Map: React.FC<MapProps> = (props) => {
                 />
             )}
 
-            {props.showCentre && (
+            {showCentre && (
                 <CentreButton
-                    position={props.showExpand ? 'bottomleft' : 'topright'}
-                    centre={center?.position}
+                    position={showExpand ? 'bottomleft' : 'topright'}
+                    centre={centerMarker?.position}
                 />
             )}
 

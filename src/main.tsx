@@ -1,17 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { ChakraProvider, ColorModeScript, ThemeConfig } from '@chakra-ui/react'
-import theme from './theme/theme.ts'
+import { createRoot } from 'react-dom/client'
+import '@/index.css'
+import App from '@/app'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')
+if (!root) throw new Error('no root element found')
+
+createRoot(root).render(
     <React.StrictMode>
-        <ChakraProvider theme={theme}>
-            <ColorModeScript
-                initialColorMode={(theme as ThemeConfig).initialColorMode}
-            />
-            <App />
-        </ChakraProvider>
+        <App />
     </React.StrictMode>
 )

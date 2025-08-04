@@ -7,7 +7,7 @@ export interface LayoutProps {
     progress?: Progress
 }
 
-const Layout: React.FC<LayoutProps> = (props) => {
+const Layout = (props: LayoutProps) => {
     const layout = useBreakpointValue({ base, lg })
     return layout ? layout(props) : null
 }

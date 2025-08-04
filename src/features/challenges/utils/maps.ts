@@ -1,9 +1,3 @@
-import React, { useState } from 'react'
-import ChakraBox from './chakrabox'
-import Map, { Line, Marker } from './map'
-import { Skeleton, useBreakpointValue } from '@chakra-ui/react'
-import ProfilePic from '../assets/me.jpeg'
-
 /**
  * Implemented per https://www.movable-type.co.uk/scripts/latlong.html
  * @param startLat Start latitude in radians
@@ -11,7 +5,7 @@ import ProfilePic from '../assets/me.jpeg'
  * @param distanceLng Distance between longitudes in radians
  * @returns Raw angular haversine distance without conversion to kilometers
  */
-const haversineDistance = (
+export const haversineDistance = (
     startLat: number,
     endLat: number,
     distanceLng: number
@@ -37,7 +31,7 @@ const haversineDistance = (
  * @param distance Distance between start and end in radians
  * @returns
  */
-const intermediatePoint = (
+export const intermediatePoint = (
     start: [number, number],
     end: [number, number],
     fraction: number,
@@ -67,7 +61,7 @@ const intermediatePoint = (
  * @param numPoints Number of points to generate
  * @returns Array of coordinates in [lat, lng] format in degrees
  */
-const greatCirclePoints = (
+export const greatCirclePoints = (
     start: [number, number],
     end: [number, number],
     numPoints: number
@@ -96,75 +90,3 @@ const greatCirclePoints = (
     greatCirclePoints.push(end)
     return greatCirclePoints
 }
-
-interface MapBoxProps {
-    challenge?: Challenge
-    progress?: Progress
-}
-
-const MapBox: React.FC<MapBoxProps> = (props) => {
-    const [expanded, setExpanded] = useState(false)
-    const toggleMap = () => {
-        setExpanded(!expanded)
-    }
-
-    const showExpand = useBreakpointValue({ base: false, lg: true })
-    const isExpanded = useBreakpointValue({ base: false, lg: expanded })
-
-    const height = screen.height
-    const baseFactor = 0.5
-    const expandedFactor = 0.55
-
-    const baseWidth = { base: 240, sm: 400, md: 696, lg: 320 }
-    const baseHeight = { base: 240, sm: 400, md: 522, lg: height * baseFactor }
-    const expandedWidth = { lg: 600 }
-    const expandedHeight = { lg: height * expandedFactor }
-
-    if (!props.challenge || !props.progress) {
-        return <Skeleton w={baseWidth} h={baseHeight} />
-    }
-
-    const start = props.challenge.target.route.waypoints[0].latlng
-    const end = props.challenge.target.route.waypoints[1].latlng
-
-    const line: Line = {
-        positions: greatCirclePoints(
-            [start.lat, start.lng] as [number, number],
-            [end.lat, end.lng] as [number, number],
-            480
-        ),
-    }
-
-    const marker: Marker = {
-        position: [
-            props.progress.location.latlng.lat,
-            props.progress.location.latlng.lng,
-        ],
-        icon: {
-            iconUrl: ProfilePic,
-            iconSize: [40, 40],
-            className: 'circular',
-        },
-        panTo: true,
-    }
-
-    return (
-        <ChakraBox
-            w={isExpanded ? expandedWidth : baseWidth}
-            h={isExpanded ? expandedHeight : baseHeight}
-            layout
-        >
-            <Map
-                toggleMap={toggleMap}
-                markers={[marker]}
-                lines={[line]}
-                center={[51.5014708012926, -0.14184707849440084]}
-                zoom={11}
-                showExpand={showExpand}
-                showCentre
-            />
-        </ChakraBox>
-    )
-}
-
-export default MapBox

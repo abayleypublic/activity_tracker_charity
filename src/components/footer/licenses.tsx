@@ -14,7 +14,7 @@ import {
     Text,
     useColorModeValue,
 } from '@chakra-ui/react'
-import license from '../../assets/LICENSE.txt'
+import license from '@/assets/LICENSE.txt'
 import { useEffect, useState } from 'react'
 import { FaList } from 'react-icons/fa'
 

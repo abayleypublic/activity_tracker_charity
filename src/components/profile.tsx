@@ -21,7 +21,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '@chakra-ui/react'
-import profilePic from '../../assets/me.jpeg'
+import profilePic from '@/assets/me.jpeg'
 import { motion } from 'framer-motion'
 import { FaFlickr, FaMoneyBill, FaStrava } from 'react-icons/fa'
 

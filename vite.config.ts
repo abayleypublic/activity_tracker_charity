@@ -1,12 +1,15 @@
+/// <reference types="vite/client" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import license from 'rollup-plugin-license'
+import viteTsconfigPaths from 'vite-tsconfig-paths'
 
 const licensePath = path.resolve('src', 'assets', 'LICENSE.txt')
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: './',
     plugins: [
         license({
             sourcemap: true,
@@ -30,6 +33,7 @@ export default defineConfig({
             },
         }),
         react(),
+        viteTsconfigPaths(),
     ],
     server: {
         proxy: {
@@ -37,6 +41,14 @@ export default defineConfig({
                 target: 'http://localhost:8000',
                 changeOrigin: true,
                 secure: false,
+            },
+        },
+    },
+    build: {
+        rollupOptions: {
+            external: ['fs/promises'],
+            output: {
+                experimentalMinChunkSize: 3500,
             },
         },
     },

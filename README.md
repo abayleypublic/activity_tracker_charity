@@ -1,13 +1,6 @@
 # Activity Tracker Charity
 
-To disable hosting (stop serving UI):
+## TODO
 
-```
-firebase hosting:disable -s [service name]
-```
-
-e.g.
-
-```
-firebase hosting:disable -s activity-tracker-staging
-```
+-   Convert layout to use a grid
+-   Fix ESLint & run on save

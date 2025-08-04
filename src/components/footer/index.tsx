@@ -7,7 +7,7 @@ import {
     useColorMode,
 } from '@chakra-ui/react'
 import { lazy } from 'react'
-import Policy from './policy'
+import Policy from '../../features/policy/components/policy'
 import { FaMoon, FaSun } from 'react-icons/fa'
 
 const Licenses = lazy(() => import('./licenses'))

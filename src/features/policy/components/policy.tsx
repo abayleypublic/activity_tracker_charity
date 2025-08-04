@@ -16,19 +16,13 @@ import {
     Link,
 } from '@chakra-ui/react'
 import { FaInfo } from 'react-icons/fa'
-import { useLocalStorage } from '../../hooks/useStorage'
-
-export const PolicyKey = 'policy-acknowledged'
-
-export enum PolicyAcknowledgement {
-    Yes = 'yes',
-    No = 'no',
-}
+import { PolicyAcknowledgement } from '@/features/policy/types'
+import usePolicy from '@/features/policy/hooks/use-policy'
 
 const Policy = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const bgColor = useColorModeValue('white', 'gray.700')
-    const { update: updateAck } = useLocalStorage(PolicyKey)
+    const [_, updateAck] = usePolicy()
 
     const closed = () => {
         updateAck(PolicyAcknowledgement.Yes)

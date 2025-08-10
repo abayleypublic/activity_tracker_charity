@@ -16,12 +16,14 @@ spec:
           filters:
               - type: URLRewrite
                 urlRewrite:
-                    hostname: activity.austinbayley.co.uk
                     path:
                         type: ReplacePrefixMatch
                         replacePrefixMatch: /
           backendRefs:
-              - name: ui
+              - group: ''
+                kind: Service
+                name: api
+                namespace: prod-activity
                 port: 80
 ---
 apiVersion: gateway.networking.k8s.io/v1

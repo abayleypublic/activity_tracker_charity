@@ -5,8 +5,9 @@ const Config = {
     userID: 'WPhWvqsqa5b9m7JO003A97FPMGo2',
 
     api: axios.create({
-        baseURL: '/api',
+        baseURL: import.meta.env.VITE_API_URL ?? '/api',
         timeout: 5000,
+        withCredentials: true,
     }),
 }
 

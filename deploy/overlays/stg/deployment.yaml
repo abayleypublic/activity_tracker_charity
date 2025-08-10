@@ -19,5 +19,8 @@ spec:
                   image: europe-west2-docker.pkg.dev/portfolio-463406/docker-repository/activity_tracker_charity
                   ports:
                       - containerPort: 80
+                  env:
+                      - name: VITE_API_URL
+                        value: https://activity.stg.austinbayley.co.uk
             imagePullSecrets:
                 - name: gcp-pull-secret

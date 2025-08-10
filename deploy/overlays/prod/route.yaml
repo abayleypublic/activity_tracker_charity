@@ -1,34 +1,6 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-    name: prod-roam-backend
-spec:
-    parentRefs:
-        - name: default-gateway
-          namespace: envoy-gateway-system
-    hostnames:
-        - 'roam.austinbayley.co.uk'
-    rules:
-        - matches:
-              - path:
-                    type: PathPrefix
-                    value: /api
-          filters:
-              - type: URLRewrite
-                urlRewrite:
-                    path:
-                        type: ReplacePrefixMatch
-                        replacePrefixMatch: /
-          backendRefs:
-              - group: ''
-                kind: Service
-                name: api
-                namespace: prod-activity
-                port: 80
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
     name: prod-roam-ui
 spec:
     parentRefs:

@@ -1,3 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: ui-runtime-config
+data:
+    config.json: |
+        {
+          "API_URL": "https://activity.stg.austinbayley.co.uk"
+        }
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,5 +29,14 @@ spec:
                   image: europe-west2-docker.pkg.dev/portfolio-463406/docker-repository/activity_tracker_charity
                   ports:
                       - containerPort: 80
+                  volumeMounts:
+                      - name: runtime-config
+                        mountPath: /usr/share/nginx/html/config.json
+                        subPath: config.json
+                        readOnly: true
+            volumes:
+                - name: runtime-config
+                  configMap:
+                      name: ui-runtime-config
             imagePullSecrets:
                 - name: gcp-pull-secret

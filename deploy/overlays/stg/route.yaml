@@ -1,0 +1,44 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+    name: stg-roam-backend
+spec:
+    parentRefs:
+        - name: default-gateway
+          namespace: envoy-gateway-system
+    hostnames:
+        - 'roam.stg.austinbayley.co.uk'
+    rules:
+        - matches:
+              - path:
+                    type: PathPrefix
+                    value: /api
+          filters:
+              - type: URLRewrite
+                urlRewrite:
+                    hostname: activity.austinbayley.co.uk
+                    path:
+                        type: ReplacePrefixMatch
+                        replacePrefixMatch: /
+          backendRefs:
+              - name: ui
+                port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+    name: stg-roam-ui
+spec:
+    parentRefs:
+        - name: default-gateway
+          namespace: envoy-gateway-system
+    hostnames:
+        - 'roam.stg.austinbayley.co.uk'
+    rules:
+        - matches:
+              - path:
+                    type: PathPrefix
+                    value: /
+          backendRefs:
+              - name: ui
+                port: 80

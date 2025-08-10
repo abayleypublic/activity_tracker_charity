@@ -16,7 +16,7 @@ spec:
           filters:
               - type: URLRewrite
                 urlRewrite:
-                    hostname: activity.austinbayley.co.uk
+                    hostname: activity.stg.austinbayley.co.uk
                     path:
                         type: ReplacePrefixMatch
                         replacePrefixMatch: /

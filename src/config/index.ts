@@ -18,6 +18,7 @@ const Config = {
     api: axios.create({
         baseURL: cfg.API_URL,
         timeout: 5000,
+        withCredentials: true,
     }),
 }
 

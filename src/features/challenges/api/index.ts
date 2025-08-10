@@ -1,4 +1,5 @@
 import { AxiosInstance } from 'axios'
+import Config from '@/config'
 
 class API {
     constructor(readonly api: AxiosInstance) {}
@@ -27,4 +28,4 @@ class API {
     }
 }
 
-export default API
+export default new API(Config.api)

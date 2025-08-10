@@ -14,20 +14,15 @@ import {
     Text,
     useColorModeValue,
 } from '@chakra-ui/react'
-import license from '@/assets/LICENSE.txt'
-import { useEffect, useState } from 'react'
+
 import { FaList } from 'react-icons/fa'
+import useLicenses from '@/features/layout/hooks/use-licenses'
 
 const Licenses = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [licenses, setLicenses] = useState<string>('')
-    const bgColor = useColorModeValue('white', 'gray.700')
+    const { licenses } = useLicenses()
 
-    useEffect(() => {
-        fetch(license).then((res) =>
-            res.text().then((text) => setLicenses(text))
-        )
-    }, [])
+    const bgColor = useColorModeValue('white', 'gray.700')
 
     return (
         <>

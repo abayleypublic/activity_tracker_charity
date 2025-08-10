@@ -20,12 +20,12 @@ const Stats = ({ progress, challenge }: StatsProps) => {
     }
 
     return (
-        <Card w={'full'} h={'full'} p={2}>
+        <Card w={'full'} p={2}>
             <VStack alignItems={'center'}>
                 <Heading size="md">Stats</Heading>
                 <Divider />
                 <Skeleton
-                    h={100}
+                    minH={100}
                     w={'full'}
                     isLoaded={!!(progress && challenge)}
                 >

@@ -24,12 +24,13 @@ import {
 import profilePic from '@/assets/me.jpeg'
 import { motion } from 'framer-motion'
 import { FaFlickr, FaMoneyBill, FaStrava } from 'react-icons/fa'
+import ChakraBox from '@/components/chakrabox'
 
 const Profile = () => {
     const linkColour = useColorModeValue('blue.600', 'blue.300')
 
     return (
-        <Box as={motion.div}>
+        <ChakraBox>
             <VStack
                 alignItems={'center'}
                 as={motion.div}
@@ -282,7 +283,7 @@ const Profile = () => {
                     more fun with friends :D
                 </Text>
             </VStack>
-        </Box>
+        </ChakraBox>
     )
 }
 

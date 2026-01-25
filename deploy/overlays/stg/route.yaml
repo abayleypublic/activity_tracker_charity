@@ -10,12 +10,25 @@ spec:
         - 'roam.stg.austinbayley.co.uk'
     rules:
         - matches:
-              - path:
-                    type: PathPrefix
-                    value: /
+            - path:
+                type: PathPrefix
+                value: /
+          filters:
+              - type: ResponseHeaderModifier
+                responseHeaderModifier:
+                  set:
+                  - name: Content-Security-Policy
+                    value: "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' 'https://*.tile.openstreetmap.org'; style-src 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests;"
+                  - name: Referrer-Policy
+                    value: "strict-origin-when-cross-origin"
+                  - name: Strict-Transport-Security
+                    value: "max-age=63072000; includeSubDomains; preload"
+                  - name: Permissions-Policy
+                    value: "geolocation=(), camera=(), microphone=()"
           backendRefs:
-              - name: ui
-                port: 80
+            - name: ui
+              port: 80
+
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
